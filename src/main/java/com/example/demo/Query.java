@@ -11,6 +11,6 @@ public class Query {
 
   @QueryMapping
   public List<String> allBook() {
-    throw new CustomException("simulate bad request", ErrorType.BAD_REQUEST);
+    throw new SimpleGraphQLException("simulate bad request", ErrorType.BAD_REQUEST);
   }
 }

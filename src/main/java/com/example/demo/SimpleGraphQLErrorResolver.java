@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class SimpleGraphQLErrorResolver extends DataFetcherExceptionResolverAdapter {
   @Override
   public GraphQLError resolveToSingleError(Throwable ex, DataFetchingEnvironment env) {
-    if (ex instanceof GraphQLError) {
-      GraphQLError error = (GraphQLError) ex;
+    if (ex instanceof SimpleGraphQLException) {
+      SimpleGraphQLException simpleGraphQLException = (SimpleGraphQLException) ex;
       return GraphqlErrorBuilder.newError(env)
-          .message(error.getMessage())
-          .errorType(error.getErrorType())
+          .message(simpleGraphQLException.getMessage())
+          .errorType(simpleGraphQLException.getErrorType())
           .build();
     }
     return null;
